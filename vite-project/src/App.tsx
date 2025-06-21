@@ -1,8 +1,11 @@
-import React from 'react'
+
+import HeroSection from './Landingpg'
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <HeroSection/>
+    </div>
   )
 }
 
