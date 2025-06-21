@@ -45,7 +45,7 @@ const RegisterMarquee = () => {
   return (
     <div
       ref={marqueeContainer}
-      className="relative overflow-hidden bg-lime-200 py-1 whitespace-nowrap cursor-pointer"
+      className="relative z-30 overflow-hidden bg-lime-200 py-1 whitespace-nowrap cursor-pointer"
     >
       <div
         ref={marqueeTrack}

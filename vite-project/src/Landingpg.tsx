@@ -6,11 +6,12 @@ import Navbar from "./components/Navbar";
 const HeroSection = () => {
   return (
     <div className="relative bg-gradient-to-br from-[#88c1f0] via-[#c98df0] to-[#86f7c0] text-black min-h-screen overflow-hidden">
-      {/* Register strip */}
-      <RegisterMarquee/>
 
-      {/* Navbar */}
-       <Navbar/>
+  {/* Navbar - always on top */}
+  <Navbar />
+
+  {/* Register strip */}
+  <RegisterMarquee />
 
       {/* Hero Content */}
       <div className="relative z-10 px-10 pt-20 grid grid-cols-1 md:grid-cols-2 items-center">
