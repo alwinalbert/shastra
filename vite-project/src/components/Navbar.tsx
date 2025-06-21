@@ -7,10 +7,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
+  };
 
-    if (!isOpen && menuRef.current) {
-      // Animate items with elastic effect
+  // Animate menu items when `isOpen` becomes true
+  useEffect(() => {
+    if (isOpen && menuRef.current) {
       gsap.fromTo(
         menuRef.current.children,
         {
@@ -28,7 +30,7 @@ const Navbar = () => {
         }
       );
     }
-  };
+  }, [isOpen]);
 
   useEffect(() => {
     // Initial navbar animation
@@ -38,6 +40,7 @@ const Navbar = () => {
         y: -80,
         opacity: 0,
         scale: 0.95,
+        delay: 0.5,
       },
       {
         y: 0,
@@ -68,22 +71,22 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* GSAP-animated menu */}
-      {isOpen && (
-        <div
-          ref={menuRef}
-          className="flex flex-col items-start gap-4 mt-4"
-        >
-          <a href="#" className="text-lime-400">Home</a>
-          <a href="#">Events</a>
-          <a href="#">Sponsors</a>
-          <a href="#">Contact</a>
-          <a href="#">About</a>
-          <button className="border border-black px-4 py-1 rounded-md hover:bg-black hover:text-white transition">
-            Login
-          </button>
-        </div>
-      )}
+      {/* Menu - always rendered but conditionally shown */}
+      <div
+        ref={menuRef}
+        className={`flex flex-col items-start gap-4 mt-4 transition-all duration-500 ${
+          isOpen ? "block" : "hidden"
+        }`}
+      >
+        <a href="#" className="text-lime-400">Home</a>
+        <a href="#">Events</a>
+        <a href="#">Competitions</a>
+        <a href="#">Schedules</a>
+        <a href="#">Contacts</a>
+        <button className="border border-black px-4 py-1 rounded-md hover:bg-black hover:text-white transition">
+          Login
+        </button>
+      </div>
     </nav>
   );
 };
