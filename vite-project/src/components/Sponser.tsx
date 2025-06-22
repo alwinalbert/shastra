@@ -70,10 +70,29 @@ const SponsorSection = () => {
     }
   }, []);
 
+  // Unique hover animation with GSAP
+  const handleMouseEnter = (el: HTMLImageElement) => {
+    gsap.to(el, {
+      scale: 1.2,
+      rotate: 5,
+      duration: 0.6,
+      ease: "elastic.out(1, 0.4)",
+    });
+  };
+
+  const handleMouseLeave = (el: HTMLImageElement) => {
+    gsap.to(el, {
+      scale: 1,
+      rotate: 0,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  };
+
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-[#88c1f0] via-[#c98df0] to-[#86f7c0] text-black text-center font-['Orbitron']"
+      className="py-20 text-black text-center font-['Orbitron']"
     >
       <h2
         ref={headingRef}
@@ -86,14 +105,16 @@ const SponsorSection = () => {
         {sponsors.map((sponsor, idx) => (
           <div
             key={idx}
-            className="sponsor-card bg-white rounded-xl px-6 py-6 text-black shadow-xl flex flex-col items-center justify-center transition-transform duration-500 hover:scale-105 hover:shadow-[0_0_25px_#c98df0]"
+            className="sponsor-card bg-white rounded-xl px-6 py-6 text-black shadow-xl flex flex-col items-center justify-center transition-transform duration-500 hover:shadow-[0_0_25px_#c98df0]"
           >
             <img
               src={sponsor.logo}
               alt={sponsor.name}
-              className="h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+              className="h-24 object-contain mb-4 cursor-pointer"
+              onMouseEnter={(e) => handleMouseEnter(e.currentTarget)}
+              onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
             />
-            <p className="text-sm font-semibold text-center transition-colors duration-300 group-hover:text-[#c98df0]">
+            <p className="text-sm font-semibold text-center">
               {sponsor.tier}
             </p>
           </div>

@@ -23,7 +23,7 @@ const GallerySection = () => {
   useEffect(() => {
     // Infinite marquee animation
     const animateRow = (
-      ref: React.RefObject<HTMLDivElement>,
+      ref: React.RefObject<HTMLDivElement | null>,
       direction: "left" | "right"
     ) => {
       const distance = ref.current?.scrollWidth || 0;
@@ -40,7 +40,7 @@ const GallerySection = () => {
     };
 
     animateRow(row1Ref, "left");
-    animateRow(row2Ref, "right");
+    animateRow(row2Ref, "right")
 
     // Animate the heading
     if (headerRef.current) {
@@ -87,7 +87,7 @@ const GallerySection = () => {
   const duplicatedImages = [...images, ...images];
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-[#88c1f0] via-[#c98df0] to-[#86f7c0] overflow-hidden">
+    <section className="relative py-20">
       <h2
         ref={headerRef}
         className="text-center text-5xl font-bold text-black mb-12 tracking-widest font-['Orbitron']"
@@ -95,7 +95,7 @@ const GallerySection = () => {
         GALLERY
       </h2>
 
-      <div className="overflow-hidden space-y-10">
+      <div className="space-y-10">
         {/* Row 1 */}
         <div ref={row1Ref} className="flex gap-6 w-max">
           {duplicatedImages.map((src, i) => (
@@ -118,7 +118,7 @@ const GallerySection = () => {
                 key={i}
                 src={src}
                 alt={`Gallery ${i}`}
-                className="w-64 h-44 object-cover rounded-xl shadow-xl border border-white/10 hover:scale-105 transition-transform duration-500"
+                className="w-64 h-44 rounded-xl shadow-xl border border-white/10 hover:scale-105 transition-transform duration-500"
               />
             ))}
         </div>

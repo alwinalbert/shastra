@@ -3,7 +3,7 @@ import HeroSection from './Landingpg'
 
 const App = () => {
   return (
-    <div>
+    <div  >
       <HeroSection/>
     </div>
   )

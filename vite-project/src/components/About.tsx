@@ -24,7 +24,8 @@ const AboutSection = () => {
         ease: "power4.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 85%",
+          start: "top 65%",
+          
         },
       }
     );
@@ -42,7 +43,7 @@ const AboutSection = () => {
           ease: "back.out(1.7)",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 90%",
+            start: "top 65%",
           },
         }
       );
@@ -96,7 +97,7 @@ const AboutSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-br from-[#88c1f0] via-[#c98df0] to-[#86f7c0] py-24 px-6 md:px-20 overflow-hidden"
+      className="relative py-24 px-6 md:px-20 overflow-hidden"
     >
       {/* ⭐ Stars */}
       <div ref={starsRef} className="absolute inset-0 z-0 pointer-events-none">
