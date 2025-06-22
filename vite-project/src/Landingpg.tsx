@@ -4,10 +4,12 @@ import Navbar from "./components/Navbar";
 import LoadingScreen from "./components/Loader"; 
 import AboutSection from "./components/About";
 import GallerySection from "./components/Gallery";
+import SponsorSection from "./components/Sponser";
+import Footer from "./components/Footer";
 
 const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(true);
-
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       {isLoading && <LoadingScreen onFinish={() => setIsLoading(false)} />}
@@ -15,9 +17,10 @@ const HeroSection = () => {
       {!isLoading && (
         <div className="relative bg-gradient-to-br from-[#88c1f0] via-[#c98df0] to-[#86f7c0] text-black min-h-screen overflow-hidden">
           {/* Navbar */}
-          <Navbar />
+          <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
 
           {/* Register strip */}
+          <div className={"relative top-16"}>
           <RegisterMarquee />
 
           {/* Hero Content */}
@@ -54,6 +57,13 @@ const HeroSection = () => {
           <div>
             <GallerySection/>
           </div>
+          <div>
+            <SponsorSection/>
+          </div>
+          <div>
+            <Footer/>
+          </div>
+        </div>
         </div>
       )}
     </>

@@ -115,7 +115,7 @@ const AboutSection = () => {
       {/*  Heading */}
       <h2
         ref={headingRef}
-        className="relative z-10 text-4xl md:text-5xl font-extrabold text-gray-700 mb-12 tracking-widest text-center font-['Orbitron']"
+        className="relative z-10 text-4xl md:text-5xl font-extrabold text-black mb-12 tracking-widest text-center font-['Orbitron']"
       >
         {"ABOUT".split("").map((char, i) => (
           <span key={i} className="inline-block mx-1">
@@ -130,9 +130,9 @@ const AboutSection = () => {
         className="relative z-10 bg-gradient-to-br from-[#1e3a5f] via-[#3b185f] to-[#200029] text-white p-10 md:p-14 rounded-3xl shadow-2xl border border-white/10 backdrop-blur-lg max-w-4xl mx-auto"
       >
         <p className="text-lg md:text-xl leading-relaxed text-center text-white/90 font-light">
-          Excel, the premier techno-managerial festival of India, hosted by the students of Govt. Model Engineering College, Kochi is a beacon of innovation and a celebration of young minds.
+          Shastra, the premier techno-managerial festival of India, hosted by the students of Govt. Model Engineering College, Kochi is a beacon of innovation and a celebration of young minds.
           <br /><br />
-          Since its inception in 2001, Excel has always pushed the limits of creativity as a dynamic platform for students to explore, innovate, and excel. Excel returns for a momentous 25<sup>th</sup> edition this Excel 2024 and promises to be an unforgettable journey.
+          Since its inception in 2001, Excel has always pushed the limits of creativity as a dynamic platform for students to explore, innovate, and excel. Shastra returns for a momentous 25<sup>th</sup> edition this Shastra 2025 and promises to be an unforgettable journey.
           <br /><br />
           Join us for a constellation of events that includes workshops, competitions, talks, and all kinds of fun.
         </p>
