@@ -10,8 +10,7 @@ const AboutSection = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const floatingRef = useRef<HTMLDivElement>(null);
-  const starsRef = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     gsap.fromTo(
       contentRef.current,
@@ -62,47 +61,17 @@ const AboutSection = () => {
       });
     }
 
-    if (starsRef.current) {
-      const stars = starsRef.current.querySelectorAll("div");
-      stars.forEach((star) => {
-        gsap.to(star, {
-          x: `+=${Math.random() * 30 - 15}`,
-          y: `+=${Math.random() * 30 - 15}`,
-          opacity: Math.random() * 0.8 + 0.2,
-          duration: 3 + Math.random() * 3,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
-      });
-    }
+    
   }, []);
 
   // Larger, softer glowing stars (30 only)
-  const stars = Array.from({ length: 30 }).map((_, i) => (
-    <div
-      key={i}
-      className="absolute rounded-full bg-white/80 shadow-lg"
-      style={{
-        width: `${Math.random() * 3 + 2}px`,
-        height: `${Math.random() * 3 + 2}px`,
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        opacity: 0.6,
-        filter: "blur(1px)",
-      }}
-    />
-  ));
+  
 
   return (
     <section
       ref={sectionRef}
       className="relative py-24 px-6 md:px-20 overflow-hidden"
     >
-      {/* ⭐ Stars */}
-      <div ref={starsRef} className="absolute inset-0 z-0 pointer-events-none">
-        {stars}
-      </div>
 
       {/*  Floating EXPLORE */}
       <div

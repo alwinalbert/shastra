@@ -14,6 +14,7 @@ const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const starsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
   const letters = document.querySelectorAll(".letter");
@@ -31,9 +32,36 @@ const HeroSection = () => {
       delay:0.3,
     }
   );
+
+  if (starsRef.current) {
+      const stars = starsRef.current.querySelectorAll("div");
+      stars.forEach((star) => {
+        gsap.to(star, {
+          x: `+=${Math.random() * 100 - 15}`,
+          y: `+=${Math.random() * 100 - 15}`,
+          opacity: Math.random() * 0.8 + 0.2,
+          duration: 3 + Math.random() * 3,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      });
+    }
 }, [isLoading]);
 
-
+  const stars = Array.from({ length: 300 }).map((_, i) => (
+    <div
+      key={i}
+      className="absolute rounded-full bg-white"
+      style={{
+        width: `${Math.random() * 3 + 2}px`,
+        height: `${Math.random() * 3 + 2}px`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        opacity: 0.6,
+      }}
+    />
+  ));
 
   return (
     <>
@@ -42,6 +70,10 @@ const HeroSection = () => {
       {!isLoading && (
         <div className="relative bg-gradient-to-br from-[#88c1f0] via-[#c98df0] to-[#86f7c0] text-black min-h-screen overflow-hidden">
           {/* Navbar */}
+          {/* ⭐ Stars */}
+          <div ref={starsRef} className="absolute inset-0 z-0 pointer-events-none">
+            {stars}
+          </div>
           <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
 
           {/* Register strip */}
@@ -68,9 +100,7 @@ const HeroSection = () => {
                   ))}
                 </h1>
 
-                <button className="bg-lime-300 hover:bg-lime-400 px-6 py-3 rounded-md shadow-md text-xl font-bold transition">
-                  →
-                </button>
+               
               </div>
 
               {/* Video */}
@@ -79,7 +109,7 @@ const HeroSection = () => {
 
             {/* Bottom Banner */}
             <div className="bg-lime-200 py-6 mt-12 text-center text-6xl font-bold text-gray-700 tracking-wide">
-              SOUTH ASIA’S
+              SOUTH INDIA'S BIGGEST TECHFEST
             </div>
 
             {/* Sections */}
